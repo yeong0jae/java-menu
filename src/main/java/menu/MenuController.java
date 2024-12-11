@@ -3,6 +3,7 @@ package menu;
 import java.util.List;
 import menu.domain.Coach;
 import menu.domain.Coaches;
+import menu.domain.Day;
 import menu.domain.Recommendation;
 import menu.view.InputView;
 
@@ -24,7 +25,12 @@ public class MenuController {
         }
 
         Recommendation recommendation = new Recommendation();
-        recommendation.recommend(coaches);
 
+        List<String> days = Day.getDays();
+        for (String day : days) {
+            recommendation.recommend(coaches);
+        }
+
+        
     }
 }
