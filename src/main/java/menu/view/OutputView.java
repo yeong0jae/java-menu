@@ -20,14 +20,20 @@ public class OutputView {
         for (int i = 0; i < 5; i++) {
             System.out.print("| " + recommendedCategory.get(i) + " ");
         }
-        System.out.println(" ]");
+        System.out.println("]");
     }
 
     private void printCoachesResult(List<Coach> coaches) {
-
+        coaches.forEach(coach -> {
+            System.out.print("[ " + coach.getName() + " ");
+            coach.getRecommendedMenu().forEach(menu -> {
+                System.out.print("| " + menu + " ");
+            });
+            System.out.println("]");
+        });
     }
 
     private void printDays() {
-        System.out.println("[ 구분 | " + "월요일" + " | " + "화요일" + " | " + "수요일" + " | " + "목요일" + " | " + "금요일" + "]");
+        System.out.println("[ 구분 | " + "월요일" + " | " + "화요일" + " | " + "수요일" + " | " + "목요일" + " | " + "금요일" + " ]");
     }
 }

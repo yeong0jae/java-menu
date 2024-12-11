@@ -34,6 +34,18 @@ public enum Menu {
                 .getMenus();
     }
 
+    public static boolean isIn(List<String> menus) {
+        boolean isIn = false;
+        for (Menu menu : values()) {
+            isIn = menus.stream()
+                    .anyMatch(menuName -> menu.getMenus().contains(menuName));
+            if (isIn) {
+                break;
+            }
+        }
+        return isIn;
+    }
+
     public List<String> getMenus() {
         return menus;
     }

@@ -4,6 +4,7 @@ import java.util.List;
 import menu.domain.Coach;
 import menu.domain.Coaches;
 import menu.domain.Day;
+import menu.domain.Menu;
 import menu.domain.Recommendation;
 import menu.domain.RecommendedCategory;
 import menu.view.InputView;
@@ -42,8 +43,13 @@ public class MenuController {
 
     private void forbidMenu(Coaches coaches) {
         for (Coach coach : coaches.getCoaches()) {
-            List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
-            coach.addForbiddenMenu(menus);
+            while (true) {
+                List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
+                if (Menu.isIn(menus)) {
+                    coach.createForbiddenMenu(menus);
+                    break;
+                }
+            }
         }
     }
 

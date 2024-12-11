@@ -6,16 +6,12 @@ public class Coach {
 
     private final String name;
     private ForbiddenMenu forbiddenMenu;
-    private RecommendedMenu recommendedMenu;
+    private final RecommendedMenu recommendedMenu;
 
     public Coach(String name) {
         validateLength(name);
         this.name = name;
         this.recommendedMenu = new RecommendedMenu();
-    }
-
-    public void addForbidden(String menu) {
-        forbiddenMenu.add(menu);
     }
 
     private void validateLength(String name) {
@@ -24,11 +20,15 @@ public class Coach {
         }
     }
 
+    public List<String> getRecommendedMenu() {
+        return recommendedMenu.getRecommendedMenus();
+    }
+
     public String getName() {
         return name;
     }
 
-    public void addForbiddenMenu(List<String> menus) {
+    public void createForbiddenMenu(List<String> menus) {
         this.forbiddenMenu = new ForbiddenMenu(menus);
     }
 
