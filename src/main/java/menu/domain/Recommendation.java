@@ -31,4 +31,8 @@ public class Recommendation {
             }
         }
     }
+
+    public List<String> getRecommendedCategories() {
+        return recommendedCategory.getRecommendedCategory();
+    }
 }

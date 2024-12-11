@@ -20,4 +20,8 @@ public class RecommendedCategory {
     public void addCategory(String randomCategory) {
         recommendedCategory.add(randomCategory);
     }
+
+    public List<String> getRecommendedCategory() {
+        return recommendedCategory;
+    }
 }
