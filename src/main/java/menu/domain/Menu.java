@@ -11,11 +11,11 @@ public enum Menu {
     WESTERN("양식", List.of("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니"));
 
     private final String category;
-    private final List<String> menu;
+    private final List<String> menus;
 
-    Menu(String category, List<String> menu) {
+    Menu(String category, List<String> menus) {
         this.category = category;
-        this.menu = menu;
+        this.menus = menus;
     }
 
     public static String getCategory(int i) {
@@ -24,6 +24,18 @@ public enum Menu {
                 .findFirst()
                 .get()
                 .getCategory();
+    }
+
+    public static List<String> getMenusByCategory(String category) {
+        return Arrays.stream(values())
+                .filter(menu -> category.equals(menu.getCategory()))
+                .findFirst()
+                .get()
+                .getMenus();
+    }
+
+    public List<String> getMenus() {
+        return menus;
     }
 
     public String getCategory() {

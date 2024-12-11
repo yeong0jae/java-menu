@@ -14,10 +14,7 @@ public class RecommendedCategory {
     }
 
     public boolean isRecommendable(String randomCategory) {
-        if (Collections.frequency(recommendedCategory, randomCategory) > MIN_CATEGORY_RECOMMEND_NUMBER) {
-            return false;
-        }
-        return true;
+        return Collections.frequency(recommendedCategory, randomCategory) <= MIN_CATEGORY_RECOMMEND_NUMBER;
     }
 
     public void addCategory(String randomCategory) {

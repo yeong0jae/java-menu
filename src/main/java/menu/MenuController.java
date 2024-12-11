@@ -24,7 +24,7 @@ public class MenuController {
         }
 
         Recommendation recommendation = new Recommendation();
-        recommendation.recommend();
+        recommendation.recommend(coaches);
 
     }
 }

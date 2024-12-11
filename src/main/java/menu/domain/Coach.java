@@ -6,6 +6,7 @@ public class Coach {
 
     private final String name;
     private ForbiddenMenu forbiddenMenu;
+    private RecommendedMenu recommendedMenu;
 
     public Coach(String name) {
         validateLength(name);
@@ -28,5 +29,13 @@ public class Coach {
 
     public void addForbiddenMenu(List<String> menus) {
         this.forbiddenMenu = new ForbiddenMenu(menus);
+    }
+
+    public boolean isRecommendable(String menu) {
+        return !forbiddenMenu.isIn(menu) && !recommendedMenu.isIn(menu);
+    }
+
+    public void addRecommendMenu(String menu) {
+        recommendedMenu.add(menu);
     }
 }
