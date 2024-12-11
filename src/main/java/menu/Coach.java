@@ -1,12 +1,20 @@
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Coach {
 
     private final String name;
+    private final List<String> forbiddens = new ArrayList<>();
 
     public Coach(String name) {
         validateLength(name);
         this.name = name;
+    }
+
+    public void addForbidden(String menu) {
+        forbiddens.add(menu);
     }
 
     private void validateLength(String name) {
