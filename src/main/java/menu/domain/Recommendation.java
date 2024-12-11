@@ -7,19 +7,16 @@ public class Recommendation {
 
     private RecommendedCategory recommendedCategory;
 
+    public Recommendation(RecommendedCategory recommendedCategory) {
+        this.recommendedCategory = recommendedCategory;
+    }
+
     public void recommend(Coaches coaches) {
+        String randomCategory = getRandomCategory();
+        addRandomMenu(coaches, randomCategory);
+    }
 
-        // 카테고리 랜덤 하나 추가
-        String randomCategory;
-        while (true) {
-            randomCategory = Menu.getCategory(Randoms.pickNumberInRange(0, 4));
-            if (recommendedCategory.isRecommendable(randomCategory)) {
-                recommendedCategory.addCategory(randomCategory);
-                break;
-            }
-        }
-
-        // 코치마다 메뉴 랜덤 추가
+    private static void addRandomMenu(Coaches coaches, String randomCategory) {
         for (Coach coach : coaches.getCoaches()) {
             while (true) {
                 List<String> menus = Menu.getMenusByCategory(randomCategory);
@@ -32,7 +29,19 @@ public class Recommendation {
         }
     }
 
+    private String getRandomCategory() {
+        String randomCategory;
+        while (true) {
+            randomCategory = Menu.getCategory(Randoms.pickNumberInRange(0, 4));
+            if (recommendedCategory.isRecommendable(randomCategory)) {
+                recommendedCategory.addCategory(randomCategory);
+                break;
+            }
+        }
+        return randomCategory;
+    }
+
     public List<String> getRecommendedCategories() {
-        return recommendedCategory.getRecommendedCategory();
+        return recommendedCategory.getCategories();
     }
 }

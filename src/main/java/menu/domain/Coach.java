@@ -11,6 +11,7 @@ public class Coach {
     public Coach(String name) {
         validateLength(name);
         this.name = name;
+        this.recommendedMenu = new RecommendedMenu();
     }
 
     public void addForbidden(String menu) {

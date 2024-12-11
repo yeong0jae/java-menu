@@ -5,6 +5,7 @@ import menu.domain.Coach;
 import menu.domain.Coaches;
 import menu.domain.Day;
 import menu.domain.Recommendation;
+import menu.domain.RecommendedCategory;
 import menu.view.InputView;
 import menu.view.OutputView;
 
@@ -21,21 +22,34 @@ public class MenuController {
     public void run() {
         outputView.printStartMessage();
 
-        List<String> inputNames = inputView.readCoachNames();
-        Coaches coaches = new Coaches(inputNames);
+        Coaches coaches = createCoach();
+        forbidMenu(coaches);
 
-        for (Coach coach : coaches.getCoaches()) {
-            List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
-            coach.addForbiddenMenu(menus);
-        }
+        Recommendation recommendation = recommend(coaches);
+        outputView.printResult(coaches.getCoaches(), recommendation.getRecommendedCategories());
+    }
 
-        Recommendation recommendation = new Recommendation();
+    private Recommendation recommend(Coaches coaches) {
+        RecommendedCategory recommendedCategory = new RecommendedCategory();
+        Recommendation recommendation = new Recommendation(recommendedCategory);
 
         List<String> days = Day.getDays();
         for (String day : days) {
             recommendation.recommend(coaches);
         }
-
-        outputView.printResult(coaches.getCoaches(), recommendation.getRecommendedCategories());
+        return recommendation;
     }
+
+    private void forbidMenu(Coaches coaches) {
+        for (Coach coach : coaches.getCoaches()) {
+            List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
+            coach.addForbiddenMenu(menus);
+        }
+    }
+
+    private Coaches createCoach() {
+        List<String> inputNames = inputView.readCoachNames();
+        return new Coaches(inputNames);
+    }
+
 }

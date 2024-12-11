@@ -1,14 +1,11 @@
 package menu.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecommendedMenu {
 
-    private List<String> recommendedMenus;
-    
-    public RecommendedMenu(List<String> recommendedMenus) {
-        this.recommendedMenus = recommendedMenus;
-    }
+    private List<String> recommendedMenus = new ArrayList<>();
 
     public List<String> getRecommendedMenus() {
         return recommendedMenus;
