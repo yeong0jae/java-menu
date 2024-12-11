@@ -1,6 +1,7 @@
 package menu;
 
 import java.util.List;
+import java.util.function.Supplier;
 import menu.domain.Coach;
 import menu.domain.Coaches;
 import menu.domain.Day;
@@ -23,7 +24,7 @@ public class MenuController {
     public void run() {
         outputView.printStartMessage();
 
-        Coaches coaches = createCoach();
+        Coaches coaches = retryUntilValid(this::createCoach);
         forbidMenu(coaches);
 
         Recommendation recommendation = recommend(coaches);
@@ -56,6 +57,16 @@ public class MenuController {
     private Coaches createCoach() {
         List<String> inputNames = inputView.readCoachNames();
         return new Coaches(inputNames);
+    }
+
+    private static <T> T retryUntilValid(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 }
