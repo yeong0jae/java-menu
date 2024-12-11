@@ -1,4 +1,4 @@
-package menu;
+package menu.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,12 +26,6 @@ public class Coaches {
 
     public int getSize() {
         return coaches.size();
-    }
-
-    public void addForbiddenMenu(int i, ForbiddenMenu forbiddenMenu) {
-        forbiddenMenu.getForbiddens().forEach(
-                inputForbidden -> coaches.get(i).addForbidden(inputForbidden)
-        );
     }
 
     public String getCoachName(int i) {

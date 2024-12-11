@@ -1,4 +1,6 @@
-package menu;
+package menu.domain;
+
+import java.util.List;
 
 public class Coach {
 
@@ -22,5 +24,9 @@ public class Coach {
 
     public String getName() {
         return name;
+    }
+
+    public void addForbiddenMenu(List<String> menus) {
+        this.forbiddenMenu = new ForbiddenMenu(menus);
     }
 }
