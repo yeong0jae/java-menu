@@ -20,7 +20,7 @@
         - [ ] 한 주에 같은 카테고리는 최대 2회까지만 고를 수 있다.
         - ex) 구구: 비빔밥, 김치찌개, 쌈밥, 규동, 우동 → 한식을 3회 먹으므로 불가능
 
-        - [ ] 추천할 카테고리는 camp.nextstep.edu.missionutils에서 제공하는 Randoms.pickNumberInRange()에서 생성해 준 값을 이용하여 정해야 한다.
+        - [x] 추천할 카테고리는 camp.nextstep.edu.missionutils에서 제공하는 Randoms.pickNumberInRange()에서 생성해 준 값을 이용하여 정해야 한다.
             - String category = categories.get(Randoms.pickNumberInRange(1, 5));
         - [ ] Randoms.pickNumberInRange()의 결과가 1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식을 추천해야 한다.
         - [ ] 추천할 수 없는 카테고리인 경우 다시 Randoms.pickNumberInRange()를 통해 임의의 값을 생성해서 추천할 카테고리를 정해야 한다.

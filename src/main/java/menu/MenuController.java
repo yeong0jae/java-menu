@@ -3,6 +3,7 @@ package menu;
 import java.util.List;
 import menu.domain.Coach;
 import menu.domain.Coaches;
+import menu.domain.Recommendation;
 import menu.view.InputView;
 
 public class MenuController {
@@ -14,16 +15,16 @@ public class MenuController {
     }
 
     public void run() {
-
         List<String> inputNames = inputView.readCoachNames();
         Coaches coaches = new Coaches(inputNames);
 
         for (Coach coach : coaches.getCoaches()) {
-
-//            List<String> menus = List.of("우동", "스시");
             List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
             coach.addForbiddenMenu(menus);
         }
+
+        Recommendation recommendation = new Recommendation();
+        recommendation.recommend();
 
     }
 }
