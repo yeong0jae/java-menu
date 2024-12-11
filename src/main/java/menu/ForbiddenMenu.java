@@ -1,0 +1,27 @@
+package menu;
+
+import java.util.List;
+
+public class ForbiddenMenu {
+
+    private final List<String> forbiddens;
+
+    public ForbiddenMenu(List<String> forbiddens) {
+        validateLength(forbiddens);
+        this.forbiddens = forbiddens;
+    }
+
+    private void validateLength(List<String> forbiddens) {
+        if (forbiddens.size() > 2) {
+            throw new IllegalArgumentException("못 먹는 메뉴는 최대 2개입니다.");
+        }
+    }
+
+    public void add(String menu) {
+        forbiddens.add(menu);
+    }
+
+    public List<String> getForbiddens() {
+        return forbiddens;
+    }
+}

@@ -9,8 +9,10 @@ public class Application {
         Coaches coaches = new Coaches(inputNames);
 
         for (int i = 0; i < coaches.getSize(); i++) {
-            List<String> inputForbiddens = List.of("우동", "스시");
-            coaches.addForbiddenMenu(i, inputForbiddens);
+            coaches.getCoachName(i);
+            List<String> menus = List.of("우동", "스시");
+            ForbiddenMenu forbiddenMenu = new ForbiddenMenu(menus);
+            coaches.addForbiddenMenu(i, forbiddenMenu);
         }
 
 

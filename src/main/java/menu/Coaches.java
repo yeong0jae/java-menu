@@ -28,9 +28,13 @@ public class Coaches {
         return coaches.size();
     }
 
-    public void addForbiddenMenu(int i, List<String> inputForbiddens) {
-        inputForbiddens.forEach(
+    public void addForbiddenMenu(int i, ForbiddenMenu forbiddenMenu) {
+        forbiddenMenu.getForbiddens().forEach(
                 inputForbidden -> coaches.get(i).addForbidden(inputForbidden)
         );
+    }
+
+    public String getCoachName(int i) {
+        return coaches.get(i).getName();
     }
 }
