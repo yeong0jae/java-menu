@@ -10,9 +10,9 @@ import menu.domain.recommendation.Shuffler;
 
 public class RecommendService {
 
-    private RecommendedCategory recommendedCategory;
-    private NumberGenerator numberGenerator;
-    private Shuffler shuffler;
+    private final RecommendedCategory recommendedCategory;
+    private final NumberGenerator numberGenerator;
+    private final Shuffler shuffler;
 
     public RecommendService(RecommendedCategory recommendedCategory, NumberGenerator numberGenerator,
                             Shuffler shuffler) {
@@ -22,11 +22,13 @@ public class RecommendService {
     }
 
     public void recommend(Coaches coaches) {
-        String randomCategory = getRandomCategory();
-        addRandomMenu(coaches, randomCategory);
+        String recommendCategory = recommendCategory();
+        recommendMenu(coaches, recommendCategory);
+
+        Menu.valueOf("스시");
     }
 
-    private void addRandomMenu(Coaches coaches, String randomCategory) {
+    private void recommendMenu(Coaches coaches, String randomCategory) {
         for (Coach coach : coaches.getCoaches()) {
             while (true) {
                 List<String> menus = Menu.getMenusByCategory(randomCategory);
@@ -39,7 +41,7 @@ public class RecommendService {
         }
     }
 
-    private String getRandomCategory() {
+    private String recommendCategory() {
         String randomCategory;
         while (true) {
             randomCategory = Menu.getCategory(numberGenerator.generate());

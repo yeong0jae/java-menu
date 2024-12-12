@@ -23,12 +23,4 @@ public class Coaches {
             throw new IllegalArgumentException("코치는 최소 2명, 최대 5명까지 식사를 함께 한다.");
         }
     }
-
-    public int getSize() {
-        return coaches.size();
-    }
-
-    public String getCoachName(int i) {
-        return coaches.get(i).getName();
-    }
 }

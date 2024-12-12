@@ -17,10 +17,6 @@ public class ForbiddenMenu {
         }
     }
 
-    public List<String> getForbiddens() {
-        return forbiddens;
-    }
-
     public boolean isIn(String menu) {
         return forbiddens.stream()
                 .anyMatch(forbidden -> forbidden.equals(menu));
