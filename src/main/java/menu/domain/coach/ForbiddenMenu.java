@@ -17,10 +17,6 @@ public class ForbiddenMenu {
         }
     }
 
-    public void add(String menu) {
-        forbiddens.add(menu);
-    }
-
     public List<String> getForbiddens() {
         return forbiddens;
     }

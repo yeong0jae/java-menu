@@ -1,18 +1,24 @@
 package menu;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import menu.domain.Menu;
 import menu.domain.coach.Coach;
 import menu.domain.coach.Coaches;
+import menu.domain.recommendation.NumberGenerator;
 import menu.domain.recommendation.RecommendedCategory;
+import menu.domain.recommendation.Shuffler;
 
 public class RecommendService {
 
     private RecommendedCategory recommendedCategory;
+    private NumberGenerator numberGenerator;
+    private Shuffler shuffler;
 
-    public RecommendService(RecommendedCategory recommendedCategory) {
+    public RecommendService(RecommendedCategory recommendedCategory, NumberGenerator numberGenerator,
+                            Shuffler shuffler) {
         this.recommendedCategory = recommendedCategory;
+        this.numberGenerator = numberGenerator;
+        this.shuffler = shuffler;
     }
 
     public void recommend(Coaches coaches) {
@@ -20,11 +26,11 @@ public class RecommendService {
         addRandomMenu(coaches, randomCategory);
     }
 
-    private static void addRandomMenu(Coaches coaches, String randomCategory) {
+    private void addRandomMenu(Coaches coaches, String randomCategory) {
         for (Coach coach : coaches.getCoaches()) {
             while (true) {
                 List<String> menus = Menu.getMenusByCategory(randomCategory);
-                String menu = Randoms.shuffle(menus).get(0);
+                String menu = shuffler.shuffle(menus);
                 if (coach.isRecommendable(menu)) {
                     coach.addRecommendMenu(menu);
                     break;
@@ -36,7 +42,7 @@ public class RecommendService {
     private String getRandomCategory() {
         String randomCategory;
         while (true) {
-            randomCategory = Menu.getCategory(Randoms.pickNumberInRange(0, 4));
+            randomCategory = Menu.getCategory(numberGenerator.generate());
             if (recommendedCategory.isRecommendable(randomCategory)) {
                 recommendedCategory.addCategory(randomCategory);
                 break;

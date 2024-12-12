@@ -21,6 +21,7 @@ public class OutputView {
     }
 
     private void printCategoriesResult(List<String> recommendedCategory) {
+        System.out.println("메뉴 추천 결과입니다.");
         System.out.print("[ 카테고리 ");
         for (int i = 0; i < 5; i++) {
             System.out.print("| " + recommendedCategory.get(i) + " ");
