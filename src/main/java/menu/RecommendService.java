@@ -24,8 +24,6 @@ public class RecommendService {
     public void recommend(Coaches coaches) {
         String recommendCategory = recommendCategory();
         recommendMenu(coaches, recommendCategory);
-
-        Menu.valueOf("스시");
     }
 
     private void recommendMenu(Coaches coaches, String randomCategory) {
