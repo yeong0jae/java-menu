@@ -1,13 +1,17 @@
-package menu.domain;
+package menu;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import menu.domain.Menu;
+import menu.domain.coach.Coach;
+import menu.domain.coach.Coaches;
+import menu.domain.recommendation.RecommendedCategory;
 
-public class Recommendation {
+public class RecommendService {
 
     private RecommendedCategory recommendedCategory;
 
-    public Recommendation(RecommendedCategory recommendedCategory) {
+    public RecommendService(RecommendedCategory recommendedCategory) {
         this.recommendedCategory = recommendedCategory;
     }
 

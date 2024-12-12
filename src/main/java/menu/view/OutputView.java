@@ -1,7 +1,7 @@
 package menu.view;
 
 import java.util.List;
-import menu.domain.Coach;
+import menu.domain.coach.Coach;
 
 public class OutputView {
 
@@ -13,6 +13,11 @@ public class OutputView {
         printDays();
         printCategoriesResult(recommendedCategory);
         printCoachesResult(coaches);
+        printEndMessage();
+    }
+
+    private void printEndMessage() {
+        System.out.println("추천을 완료했습니다.");
     }
 
     private void printCategoriesResult(List<String> recommendedCategory) {

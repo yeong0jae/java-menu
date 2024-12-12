@@ -1,4 +1,4 @@
-package menu.domain;
+package menu.domain.recommendation;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +11,7 @@ public class RecommendedCategory {
     private List<String> categories = new ArrayList<>();
 
     public boolean isRecommendable(String randomCategory) {
-        return Collections.frequency(categories, randomCategory) <= MIN_CATEGORY_RECOMMEND_NUMBER;
+        return Collections.frequency(categories, randomCategory) < MIN_CATEGORY_RECOMMEND_NUMBER;
     }
 
     public void addCategory(String randomCategory) {
