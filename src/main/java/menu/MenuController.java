@@ -27,10 +27,9 @@ public class MenuController {
         outputView.printStartMessage();
 
         Coaches coaches = retryUntilValid(this::createCoach);
-
         forbidMenu(coaches);
-
         List<String> recommendedCategories = recommend(coaches);
+
         outputView.printResult(coaches.getCoaches(), recommendedCategories);
     }
 
@@ -41,11 +40,12 @@ public class MenuController {
 
     private void forbidMenu(Coaches coaches) {
         coaches.getCoaches().forEach(
-                coach -> {
-                    List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
-                    Menu.isIn(menus);
-                    coach.createForbiddenMenu(menus);
-                }
+                coach ->
+                        retryUntilValid(() -> {
+                            List<String> menus = inputView.readForbiddenMenuNames(coach.getName());
+                            Menu.isIn(menus);
+                            coach.createForbiddenMenu(menus);
+                        })
         );
     }
 
